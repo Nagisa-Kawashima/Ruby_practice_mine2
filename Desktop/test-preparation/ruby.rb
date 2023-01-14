@@ -212,3 +212,188 @@ def greeting(name)
   end
   
   puts greeting("John")  # 'John'を引数として渡す
+
+
+
+#   ----------------------------------------------------
+
+
+def fizz_buzz(number)
+    if number % 15 == 0
+        "FizzBuzz"
+    elsif number % 3 == 0
+        "Fizz"
+    elsif number % 5 == 0
+    else
+        number.to_s
+    end
+end
+puts "数字を入力してください"
+input = gets.to_i
+puts "結果は、、、"
+puts fizz_buzz(input)
+
+
+
+# ----------------------------------------
+# class クラス名 #始まりは大文字
+#     def メソッド名(引数)#クラス内に定義されたメソッドをインスタンスメソッド
+#     end
+# end
+
+
+class Car
+    def turn(hoge)
+        puts "#{hoge}に曲がります"
+    end
+    def run(distance)
+        puts "車で#{distance}キロ走ります"
+    end
+end
+
+car = Car.new #インスタンスの作成
+car.turn("右")
+car.run(5)
+# インスタンス名.メソッド名(引数) #呼び出し
+# --------------------------------------------
+
+# self はオブジェクト自身の事
+# 1. クラスメソッドとして使う
+# 2. レシーバーとして扱われるself
+
+
+
+#クラスメソッドの書き方
+# class クラス名
+#     def self.メソッド名(引数)
+#     end
+#   end
+  
+#   クラス名.メソッド名(引数) #呼び出す場合はインスタンスの作成をしない
+
+
+  class Car
+    def self.run(distance)
+        puts "車で#{distance}キロ走ります"
+    end
+  end
+
+  Car.run(3)
+
+
+  class Car
+
+    def move(direction, distance)
+        self.turn(direction)
+        self.run(distance)
+
+    end
+    def turn(direction)
+        puts "#{direction}に曲がります"
+    end
+    def run(distance)
+        puts "#{distance}キロ走ります"
+    end
+  end
+
+  car = Car.new
+  car.move("右", 2)
+
+#   -------------------------
+# クラスメソッドの定義の仕方は「def self.メソッド名」ですので
+# 「def self.turn」となります。
+# クラスメソッドは、直接クラスから呼び出しますのでCar.turn("右")としましょう。
+
+class Car
+    def self.turn(direction)
+        puts "#{direction}に曲がります"
+    end
+end
+
+Car.turn("右")
+
+
+
+class Car
+    def run(distance)
+        puts "車で#{distance}キロ走ります。"
+    end
+end
+# class Bus
+#     def run(distance)
+#         puts "車で#{distance}キロ走ります。"
+#     end
+# end
+class Bus < Car
+
+
+bus = Bus.new
+bus.run(3)
+
+puts Bus.superclass
+end
+
+
+class Car
+    def run(distance)
+        puts "車で#{distance}キロ走ります"
+    end
+end
+
+class Bus < Car
+    def run(distance)
+        # super
+        puts "30人を載せて走っています"
+    end
+end
+
+bus = Bus.new
+bus.run(3)
+
+
+# superとは
+# 子クラスのメソッド内で定義すると、親クラス内にある同じ名前のメソッドを呼び出すことができる
+# superの書き方は、メソッド内に「super」と定義するのみ
+
+
+# ---------------------------------
+
+class Car
+    def run(distance)
+        puts "車で#{distance}キロ走ります"
+    end
+end
+class Truck < Car
+    def run(distance)
+        super
+        puts "大きな荷物を乗せて走ります"
+    end
+end
+
+truck = Truck.new
+truck.run(5)
+
+# ----------------------------------------------------------
+
+# Rubyの内部では、メソッド名や変数名、クラス名などの"名前"を整数で管理しています。
+# これは名前を文字列で処理するよりも整数で処理する方が速いからです。
+# その整数をRubyのコード上で表現したものがシンボルです。
+# つまりシンボルとは見た目は文字列のようですが、内部では整数として扱われているオブジェクトということです。
+
+
+kawashima = :studyenglish
+puts kawashima
+
+dog1 = "犬"
+dog2 = "犬"
+dog3 = :犬
+dog4 = :犬
+#シンボルは変数名は違っていても、同じオブジェクトを参照しているので一意性があり、高速で処理を行うことが出来る
+
+puts dog1.object_id
+puts dog2.object_id
+puts dog3.object_id
+puts dog4.object_id
+
+tall = {:太郎=> 185, :二郎=> 170, :花子=>150}
+puts tall[:太郎]
