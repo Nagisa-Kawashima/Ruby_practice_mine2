@@ -208,3 +208,4 @@ p "name: %-10s" %"taguchi"
 
 p "id: %05d, rate: %10.2f" %[355, 3.284]
 p printf("id: %05d, rate: %10.2f\n", 355, 3.284)
+
