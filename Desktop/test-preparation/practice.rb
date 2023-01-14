@@ -125,3 +125,86 @@ p h.sort{|h, g| g[3]<=>h[3]}.to_h
 p h
 
 #ハッシュとして扱いたい場合はto_hメソッドを使う
+
+
+# ---------------------------------------------------------
+colors = ["red", "blue", "yellow"] #(-3, -2, -1)
+p colors[0]
+p colors[-3]
+p colors[0..2]
+p colors[0...2] #2のインデックスは含まれない
+p colors[5]
+
+p colors[0] = "pink" #０番目の要素がpinkに変わる
+p colors
+
+p colors[1..2] =["white", "black"]
+p colors.push("gold")
+p colors << "silver"
+
+p colors.size
+p colors.sort
+p colors.sort.reverse
+# -----------------------------------------
+
+p scores = {"taguchi"=> 200, "kawashima"=> 400}
+p scores = {:taguchi=> 200, :kawashima=> 400}
+p scores = {taguchi: 200, kawashima: 400}
+
+p scores[:taguchi]
+p scores[:kawashima]= 500 #値の変更と呼び出し
+p scores
+p scores.size
+p scores.keys
+p scores.values
+p scores.has_key?(:kawashima) #true,falseで返してくれる
+
+# ----------------------------------------------------
+x= 50
+y= "3"
+
+p x + y.to_i
+p x + y.to_f
+p x.to_s + y
+
+scores = {kawa: 200, shima: 100} 
+p scores
+p scores.to_a  #キーと値を配列に変換してくれる
+
+
+p scores.to_a.to_h #ハッシュに変換してくれる
+# ---------------------------------------------------------
+
+puts "he\"llo"
+puts 'he\'llo'
+
+ puts %Q(he'llo)
+ puts %(he'llo)
+ puts %q(he'llo)
+
+p ["red", "blue"]
+p ['red', 'blue']
+
+p %W(red blue) #大文字のW
+p %w(red blue) #小文字のw
+
+puts "hello"
+puts 'hello'
+puts %(hello)      #どれもすべて文字列として認識される
+puts %Q(hello)
+
+puts ["red", "yellow"]
+puts ['red', 'blue']
+p ["red", "yellow"]
+p ['red', 'blue']
+
+# ------------------------------------------------------
+# %s 文字列
+# %d 整数
+# %f 浮動少数点数
+p "name: %s" %"taguchi"
+p "name: %10s" %"taguchi"
+p "name: %-10s" %"taguchi"
+
+p "id: %05d, rate: %10.2f" %[355, 3.284]
+p printf("id: %05d, rate: %10.2f\n", 355, 3.284)
