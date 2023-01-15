@@ -165,3 +165,113 @@ def roman_to_int(s)
     end
     res
 end
+p roman_to_int("III")
+p roman_to_int("LVIII")
+p roman_to_int("MCMXCIV")
+# -------------------------------------------------------
+# 14. Longest Common Prefix
+
+def longest_common_prefix(strs)
+    prefix = ""
+    length = strs.map( &:length).min
+    0.upto(length - 1) do |i|
+        char = strs[0][i]
+        strs.each { |s| return prefix if s[i] != char }
+        prefix += char
+    end
+    prefix
+end
+p longest_common_prefix(["flower","flow","flight"])
+
+# --------------------------------------
+language =["Ruby", "Rails", "Python", "Swift", "Java", "PHP"]
+
+p language.map {|a| a.upcase}
+    #配列の要素分処理を繰り返したい時 
+    # 配列のオブジェクトlanguageの要素を一つずつ取り出して指定した変数aに代入する
+    #返り値は配列となる
+
+# オブジェクト名.map { |変数|
+# 実行する処理
+# }
+# map
+
+array = [10, 20, 30, 40, 50]
+p array.map{|x| x*2}
+# p array
+
+hash1 = {ruby:"rails", php:"cakePHP",java: "spring"}
+# has
+hash1.map {|k, v| v.upcase}
+p hash1
+
+
+numbers = [10, 20, 30, 40]
+p new_numbers = []
+p numbers.each {|n| new_numbers << n*2}
+p new_numbers
+
+numbers = [10, 20, 30, 40]
+p new_numbers = numbers.collect{|n| n*2}
+
+
+# mapメソッド は、データ構造を保ったまま、あるルールに従い元のデータ構造を別データ構造に変換する発想です。
+
+# collect メソッドは、データ構造内の全ての要素に対して、ある処理を繰り返し実行し、その結果を集めたものという発想です。
+# mapもcollectも動作は同じ
+
+p ["RUBY", "PHP", "JAVA"].map {|s| s.downcase}
+
+p ["RUBY", "PHP", "JAVA"].map(&:downcase)
+#ブロック引数のｓが一つで、downcaseに引数がなく、sに対してメソッドを呼び出しているだけの場合&:で省略してコードを書くことが出来るp
+p h = {BANANA: 100, ORANGE: 200, MELON: 300}
+p h.map {|key, value| [key.downcase, value]}.to_h
+
+
+array = ["a", "b", "c"]
+p array.map {|s| s.upcase}
+
+def filter_r20_arr(age)
+    age if age >= 20
+end
+
+ages = [9,11,23,45,66,12,77]
+p filtered_r20_arr = ages.map {|age| filter_r20_arr(age)}
+p filtered_r20_arr.compact
+#compact 配列からnilの要素を取り除いて新たな配列を作り出すメソッド
+# ------------------------------------------------
+# upto メソッドは指定した開始数から最大数まで 1 つずつ増加しながら繰り返しを行いたいときに使用します。次のように使用します。
+
+# オブジェクト.upto(max){|変数|
+#   実行する処理1
+#   実行する処理2
+# }
+
+# オブジェクト.upto(max) do |変数|
+#     実行する処理1
+#     実行する処理2
+# end
+#   オブジェクトに指定した数値が max よりも大きい場合は繰り返し処理は行われません。
+# upto メソッドは、変数に「オブジェクト」から max までの数値を順に代入しながら { から } までの処理(又は do から end までの処理)を実行します。 1 回繰り返す毎に 1 ずつ数値は増加します。(「|変数|」の部分は省略可能です)。
+
+
+# -------------------------------------------
+3.upto(7) do |num|
+    puts ("num = "+ num.to_s)
+end
+
+# puts("3.times")
+
+3.times{|num|
+    puts("num = " + num.to_s)
+}
+
+# puts("6.upto(8)")
+6.upto(8) {|num|
+    puts("num = " + num.to_s)
+}
+
+8.downto(6) do |num|
+    puts("num = " + num.to_s)
+end
+# ----------------------------------?
