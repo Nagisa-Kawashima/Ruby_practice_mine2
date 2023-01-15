@@ -320,3 +320,12 @@ when 6 then
 else
     puts "any else"
 end
+
+a = 25
+case a
+when 6..22 then
+    puts "学生生活におすすめな必需品"
+when 23..59 then
+    puts "社会人生活におすすめな商品"
+when 60..100 then
+    puts "定年後の人生に"
