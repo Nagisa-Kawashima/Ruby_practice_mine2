@@ -38,7 +38,7 @@ p 16.digits(15)
 p 16.digits(14)
 p 16.digits(17)
 p 16.digits(18)
-
+# ----------------------------------
 # 3桁の整数があります。その整数の 「百の位・十の位・一の位の和」 を出力し、10の倍数との差を出力するプログラムを書いてください。
 # 最大でも(9,9,9) 和は２７で１０の倍数との差はあまり７となる
 
@@ -128,3 +128,40 @@ p array_1 | array_2
 
 
 # ---------------------------------------------
+
+
+
+# 13. Roman to Integer
+
+def roman_to_int(s)
+    hash = {
+        "I" => 1,
+        "V" => 5,
+        "X" => 10,
+        "L" => 50,
+        "C" => 100,
+        "D" => 500,
+        "M" => 1000
+    }
+    substractions = {
+        "IV" => 4,
+        "IX" => 9,
+        "XL" => 40,
+        "XC" => 90,
+        "CD" => 400,
+        "CM" => 900
+    }
+    i = 0
+    res = 0
+    while i < s.length
+        val = if (current = substractions[s[i..(i+1)]])
+            i+= 1
+            current
+        else
+            hash[s[i]]
+        end
+        res += val
+        i+=1
+    end
+    res
+end
