@@ -275,3 +275,110 @@ end
     puts("num = " + num.to_s)
 end
 # ----------------------------------?
+# 20. Valid Parentheses
+
+def open_bracket?(char)
+    # char == '(' || char == '{' || char == '['
+    ['(', '{', '['].include?(char)
+end
+
+def matching?(prev, current)
+    (prev == '(' && current == ')') || (prev == '{' && current == '}') || (prev == '[' && current == ']')
+end
+
+def is_valid(s)
+    # ({[]})
+    # []]]]]]
+    # for each char
+    stack = []
+    for i in 0...s.size
+        char = s[i]
+        if open_bracket?(char)
+            stack.push char
+        else
+            prev = stack.pop
+            return false if prev.nil? || !matching?(prev, char)
+        end
+    end
+    stack.empty?
+end
+p is_valid("()[]{}")
+p is_valid("(]")
+p is_valid("()")
+p is_valid("")
+# ---------------------------------------
+# for 変数 in オブジェクト do #doは省略しても良い
+#オブジェクトには配列や範囲オブジェクトの値を渡している
+
+#     処理
+# end
+array = [1,2,3,4,5]
+for i in array do
+    puts i  
+end
+
+for i in 1..5 do
+    puts i
+end
+for i in 1...5 do #1-4まで
+    puts i
+end
+
+for i in 1..5 do
+    if i == 4
+        next #nextメソッドは名前の通り処理をスキップして次の処理に向かう事ができるメソッド
+    end
+    puts i
+end
+
+for i in 1..5 do
+    if i== 4
+        break
+    end
+    puts i
+end
+
+for i in 1..6 do #1,2,3,5,5,6となる、条件を一度満たしたら終わるまで無視して繰り返し処理されるもの
+    if i ==4
+        i =5
+        redo
+    end
+    puts i
+end
+# --------------------------------------------------------
+# popメソッドとは、rubyのArrayクラスが持っており、配列の末尾の要素を削除するメソッドです。
+# また、popメソッドに引数を渡すことで、削除する要素の個数を指定することもできます。
+
+# 削除された要素は、popメソッドの戻り値として渡されます。
+
+# 削除する要素がなかった場合は、nilが返ってきます。
+p array = [1,2,3]
+p array.pop #削除された要素3を表示する
+p array #[1, 2]
+
+p array= [1,2,3]
+p array.pop(2) #[2, 3]
+p array #[1]
+# --------------------------------------
+p array= [1,2,3]
+p array.shift
+p array
+p array= [1,2,3]
+p array.shift(2)
+p array
+# --------------------------------
+#pushメソッドは、末尾に追加したい要素を引数で渡します。
+# 引数に複数要素を入れてあげるだけで、末尾に複数の要素を追加できます。
+# popメソッドやshiftメソッドと違い、pushメソッドは追加した配列自身が戻り値となることに注意が必要です。
+
+p array = [1,2,3,4]
+p array.push(5)
+p array
+
+p array = [1,2,3,4]
+p array.push(5,6)
+p array
+
+
+
+
