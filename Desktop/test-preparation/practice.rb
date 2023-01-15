@@ -209,3 +209,114 @@ p "name: %-10s" %"taguchi"
 p "id: %05d, rate: %10.2f" %[355, 3.284]
 p printf("id: %05d, rate: %10.2f\n", 355, 3.284)
 
+# -------------------------------
+memo2 = gets.to_s
+
+if memo2.chomp == "grate"
+    puts "grateと入力されました"
+else
+    puts "grateと入力されませんでした"
+end
+
+string = "ruby\n"
+p string
+p string.chomp
+
+
+string = "ruby\n"
+p string.chomp
+
+p string.chomp!
+p string
+
+strings = "ruby\npython\njava\n"
+strings.each_line do |string|
+    p string.chomp
+end 
+
+File.readlines("sample.txt").each do |line|
+    p line.chomp
+end
+#ファイルからデータを文字列の配列として読み込むFile.readlinesメソッドがあります。このメソッドも、文字列の末尾に改行コードが付いています。
+
+strings = "ruby \n pthon \n java \n"
+p strings.chomp
+p strings
+#chompは文字列の末尾の改行コードのみ削除する
+
+strings1 = " ruby  \n python \n java\n"
+strings2 = " ruby \n python \n jav\na"
+
+p strings1.chop.end_with?
+p strings2.chop.end_with?
+#chopは文字列の末尾の1文字のみを、改行コードであるかないかにかかわらず削除します。このようにchopはchompより少し汎用的な用途に使用されます。
+
+strings = "  \n\truby  \n python  \n java  \n"
+p strings.strip
+# stripは文字列の前後のホワイトスペースをすべて削除します。ホワイトスペースとは、改行コード、半角スペース、タブの３つを含んだ総称です。
+
+strings = " ruby \n python  \n java  \n\t"
+
+p strings.gsub(/(\r\n?|\n)/, "\t")
+#gsubは正確には正規表現による文字列置換メソッドです。第一引数に与えた正規表現にマッチする文字列をすべて第二引数の文字列に置換します。
+
+score = gets.to_i
+if score > 80
+    puts "grate!"
+elsif score > 60
+    puts "good!"
+else
+    puts "soso"
+end
+
+puts "hoge" if score > 90
+#100の場合はhoge grate両方とも出力される
+# --------------------------------------------------
+signal = gets.chomp
+
+case signal #対象
+when "red" #条件
+    puts "stop!"
+when "green", "blue"
+    puts "go"
+when "yellow"
+    puts "caution!"
+else #どの条件にもマッチしない場合に実行する処理
+    puts "wrong signal"
+end
+
+a =2
+case a
+when 1 then
+    puts "1st"
+when 2 then
+    puts "2nd"
+when 3 then
+    puts "3rd"
+else
+    puts "any else"
+end
+
+fruits = gets.to_s.chomp
+case fruits
+when "apple" then
+    puts "apple"
+when "orange" then 
+    puts "orange" 
+when "melon" then
+    puts "melon"
+else
+    puts "any else"
+end
+
+a = 4
+case a
+when 1, 2, 3 then
+    puts "lower then 4th"
+when 4, 5 then
+    puts "from 4th to 5th"
+when 6 then
+    puts "6th"
+else
+    puts "any else"
+end
