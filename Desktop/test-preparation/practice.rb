@@ -328,4 +328,119 @@ when 6..22 then
 when 23..59 then
     puts "社会人生活におすすめな商品"
 when 60..100 then
-    puts "定年後の人生に"
+    puts "定年後の人生におすすめな商品"
+else
+    puts "any else"
+end
+
+a = "SUB-DH003-A"
+case a  
+when /^A.+/ then
+    puts "Item series A"
+when /^B.+A$/ then
+    puts "Item series B patch A"
+when /^SUB.+A$/ then
+    puts "Item series SUB patch A"
+else
+    puts "any else"
+end
+# --------------------------------------------
+# オブジェクト名 .match(/正規表現/)
+
+
+string = "Rubyの勉強, Railsの学習"
+md = string.match(/.*の勉強/)
+p md[0]
+# => "Rubyの勉強"
+ 
+string = "Rubyの勉強, Railsの勉強"
+md = string.match(/.*の勉強/)
+p md[0]
+# => "Rubyの勉強, Railsの勉強"
+
+reg = /の勉強/.match("Railsの勉強をしよう")
+p reg.pre_match
+
+reg = /の勉強/.match("Railsの勉強をしよう")
+p reg.post_match
+
+# sliceはマッチした部分の文字列を取り出します。以下の例ではaから始まる最初の文字を取り出しています。
+p "xxxabcxxxx".slice(/a.../) #"abcx"を使う
+p "xxxxxxx".slice(/a../)
+#slice!はレシーバからマッチした部分を削除します。
+a = "xxxxaaaxxx"
+a.slice!(/a../)
+
+p a
+#=~（マッチした部分のインデックスを返す）
+p /aaa/ =~ "aaabbb"
+p /aaa/ =~ "rubyaaaa"
+p /aaa/ =~ "ruby"
+#!~ (マッチしなかったらtrueを返す)
+p /aaa/ !~ "aaabbb"
+p /aaa/ !~ "rubyaaaa"
+p /aaa/ !~ "ruby"
+
+#scan（マッチした部分をすべて配列で返す）
+string = "of the ruby, by the ruby, for the ruby rrrrrby"
+p string.scan(/..by/)
+#byの前の２文字まで文字列の配列として返す
+
+#置換対象.gsub(/置換したい文字/,置き換える文字)
+target = "hello, hello, hello Ruby"
+puts target.gsub(/hello/, "morning")
+
+target1 = "hello, hellom hello Rails"
+puts target1.gsub!(/hello/, "morning")
+puts target1
+#morning, morningm morning Rails となる
+
+#sub, sub!（一致した最初の部分を置き換える）
+target= "hello, hello, hello Ruby"
+puts target.sub(/hello/, "morning")
+target2 = "hello, hello, hello Rails"
+puts target2.sub!(/hello/, "morning")
+puts target2
+
+string = "Hello, Ruby, World"
+p string.split(/s*, s*, s*,/)
+
+string = "bbb"
+p string.gsub(/q*b/, "morning")
+
+string = "abbbabbaaaaaab"
+p string.gsub(/a*b/, "morning")
+
+string = "bbb"
+p string.gsub(/a+b/, "morning")
+string = "abbbabbaaaaaa"
+p string.gsub(/a+b/, "morning ")
+
+string = "bbbb"
+p string.gsub(/a?b/, "morning ")  #"morning morning morning morning "
+string = "aab"
+p string.gsub(/a?b/, "morning ")
+
+string = "bbb"
+p string.gsub(/b{3}/, "morning ")
+string= "bb"
+p string.gsub(/b{3}/, "morning ")
+
+#繰り返し回数がn回以上のときは{n,}を使用します。
+string = "bbb"
+p string.gsub(/b{2,}/, "morning ")
+string= "bb"
+p string.gsub(/b{2,}/, "morning ")
+#直前のパターンの数字bを2回以上繰り返す文字をmorningに置き換える
+
+#繰り返し回数がn回以上、m回以下のときは{n,m}を使用します
+string = "xxxabxxx"
+p string.gsub(/ab{1,2}/, "morning")
+string = "xxxxabbbxxxx"
+p string.gsub(/ab{1,2}/, "morning ")
+
+
+string= "9a"
+p string.gsub(/wa/, "morning")
+string = "Za"
+p string.gsub(/wa/, "morning")
