@@ -168,3 +168,121 @@ puts "#{emparray.last(3)}"
 sample = [1,2,3]
 p result = sample.last #3
 result = sample.last(2) #[2, 3]
+# ---------------------------------
+# 66. Plus One
+# @param {Integer[]} digits
+# @return {Integer[]}
+def plus_one(digits)
+    (digits.join.to_i + 1).to_s.split("").map { |s| s.to_i }
+              #124       #"124"  #["1", "2", "4"]   #[1,2,4]
+    # mapメソッドはhash(ハッシュ)でも使用することができますが、返り値は配列
+    ##splitは文字列を分割して配列にするメソッド
+end
+p plus_one([1,2,3])
+
+# @param {Integer[]} digits
+# @return {Integer[]}
+def plus_one(digits)
+    digits.join.to_i.next.digits.reverse
+             #123 #124 #[4, 2, 1] #[1,2,4]
+    # digitsは数値を一桁ずつ配列で返してくれるメソッド
+end
+
+p plus_one([1,2,3])
+# --------------------------------------------------
+# splitメソッドは第1引数に区切り文字を指定できますが、引数を指定しない場合は空白文字で区切られます。
+
+# 空白文字として扱われるのは、” “(半角スペース)、”\n”(改行コード)、”\t”(タブ)などです。
+str = "kawashima nagisa string"
+array = str.split
+p array
+#["kawashima", "nagisa", "string"]
+
+p "1 23  456".split
+p "1 23   456".split
+p "1 23    456".split  #半角スペースがあっても結果は同じになる
+
+#splitメソッドで任意の文字で分割するには、第1引数で指定します。
+# 文字列.split(区切り文字)
+
+str = "kawashima hoge hoge"
+p array = str.split("\n")
+str = "123456"
+array = str.split("34")
+p array  #["12", "56"]
+
+# 文字列.split(正規表現)
+str = "1,23.456"
+array = str.split(/[,|.]/)
+p array
+#文字列を1文字ずつ分割するには、区切り文字に""(ブランク)を指定します
+str = "123456"
+array = str.split("")
+p array #["1", "2", "3", "4", "5", "6"]
+
+#分割数を指定することで、分割した後の配列の要素数を指定することができます。
+# 分割数はsplitメソッドの第2引数で指定します。
+# 文字列.split(区切り文字, 分割数)
+str = "1,2,3,4,5,6"
+array = str.split(",",2)
+p array #["1", "2,3,4,5,6"] 分割数が文字列に含まれる区切り文字より少ない場合は、文字列の前方を優先して分割します。
+p array = str.split(",",4) #["1", "2", "3", "4,5,6"]
+# =======splitメソッドは文字列を分割して配列にするもの
+                    #  ^^^^^
+# ----------------------------------------------------------
+num = 3259
+num.digits => [9,5,2,3]
+puts num.digits[3] #3
+puts num.digits[2] #2
+puts num.digits[1] #5
+puts num.digits[0] #9
+
+# ------------------------------------------------
+# Integerは数値を意味するNumericクラスを親に持っていて、小数のクラスFloatも同じようにNumericを親に持ちます。
+# is_a?メソッドの特性を利用してNumericクラスとの比較を行うことで、小数を含む数値全般かどうかのチェックができます。
+def double(n)
+    if n.is_a?(Numeric)
+        n*2
+    else
+        "#{n}は数値ではありません"
+    end
+end
+p double("hoge")
+
+#instance_of?メソッドは、自分のクラスについてのみのチェックとなるため、is_a?のように親のクラスや、インクルードしているモジュールのチェックはできません。
+# 厳密なチェックをしたい場合に利用すると良いでしょう。
+
+def double_integer(n)
+    if n.instance_of?(Integer)
+        n*2
+    else
+        "#{n}は整数ではありません"
+    end
+end
+p double_integer(4)
+
+# classメソッドは、自分のクラスが返ってくるため、チェックしたいクラスとの比較をすると良いでしょう。
+#     処理としては、instance_of?と同様の結果になります。
+def double_integer(n)
+    if n.class == Integer
+        n*2
+    else
+        "#{n}は整数ではありません"
+    end
+end
+p double_integer(4)
+
+def double(n)
+    if Numeric === n
+        n*2
+    else
+        "#{n}は数値ではありません"
+    end
+end
+p double(4)
+
+# Numeric クラス自身は数値を扱う抽象クラス
+#-----サブクラスとして Integer クラスと Float クラスがあります。
+# integerの中に↓
+# Fixnumは速度を重視した、小さな整数についての型
+# Fixnumに入り切らないサイズの整数はBignum
