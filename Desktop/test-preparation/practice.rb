@@ -444,3 +444,34 @@ string= "9a"
 p string.gsub(/wa/, "morning")
 string = "Za"
 p string.gsub(/wa/, "morning")
+
+string = "暑a"
+p string.gsub(/Wa/, "morning")
+string = "na"
+p string.gsub(/Wa/, "morning")
+
+#文字列の行頭を指定する場合
+string = "bbbnbbb"
+p string.gsub(/^bbb/, "morning")
+
+string = "bbbnbbbnbbb"
+p string.gsub(/^bbb/, "morning")
+
+# string = "aaabbbnbbbaaa"
+# p string.gsub(/bbb$/, "morning")
+# string = "aaabbbnaaabbbnbbbz"
+# p string.gsub(/bbb$/, "morning")
+
+# string = "aaabbbnaaabbb"
+# p string.gsub(/Aaaa/, "morning")
+# string = "bbbbbnbbbbbnbbbz"
+# p string.gsub(/Abb/, "morning")
+
+
+# string = "aaabbbnaaabbb"
+# p string.gsub(/bbbz/, "morning")
+# # => "aaabbbn" + "aaamorning"
+ 
+# string = "bbbbbnbbbbbnbbb"
+# p string.gsub(/bbbz/, "morning")
+# => "bbbbbn" + "bbbbbn" + "morning"
