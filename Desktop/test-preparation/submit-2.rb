@@ -286,3 +286,57 @@ p double(4)
 # integerの中に↓
 # Fixnumは速度を重視した、小さな整数についての型
 # Fixnumに入り切らないサイズの整数はBignum
+# ---------------------------------------------------------
+# 67. Add Binary
+def add_binary(a, b)
+    x = a.to_i(2) #3
+    y = b.to_i(2) #1
+    
+    while y != 0
+        answer = x ^ y
+        carry = (x & y) << 1
+        x = answer
+        y = carry
+    end
+    
+    return x.to_s(2)
+end
+
+p add_binary("11", "1") #"100"
+
+def add_binary(a, b)
+    binary_array = []
+
+    sum_int = a.to_i(2) + b.to_i(2)
+
+    if sum_int.zero?
+        return "0"
+    else
+        until sum_int < 1 do
+            remainder = sum_int % 2 #0
+            binary_array << remainder
+            p sum_int = sum_int / 2
+        end
+    end
+    p binary_array.join.reverse
+    #[0, 0, 1] #"001"  #100
+end
+p add_binary("11", "1") #"100"
+# ---------------------------------------------------
+# 69. Sqrt(x)
+def my_sqrt(x)
+    (x ** 0.5).to_i
+    #xの0.5乗　数字が半分になる
+end
+  
+  
+def my_sqrt(x)
+    return x if x < 2
+    mid = x / 2
+    while mid * mid > x do
+        mid = (mid + (x / mid)) / 2
+    end
+    mid
+end
+p my_sqrt(4)
+p my_sqrt(8)
