@@ -170,8 +170,97 @@ puts "e[#{blue}m#{text}e[0m"
     p i
 end
 
-def sayHi
-    puts "hi!"
+def sayHi(name = "Tom") #引数
+    score = 80
+    # puts "hi! #{name}" 
+   return "hi #{name}, #{score}"
 end
 
-sayHi
+# sayHi("kawashima")
+# sayHi"kawashima"
+# sayHi
+p sayHi
+
+class User
+    def initialize(name)
+      @name = name
+    end
+    def sayHi
+        puts "hi! #{@name}"
+    end
+end
+tom = User.new("Tom")
+tom.sayHi
+bob = User.new("bob")
+bob.sayHi
+
+class Car
+    def initialize(carname)
+      @name = carname
+    end
+end
+  
+ car = Car.new("civic")
+ p car
+
+ class Car
+    def initialize(carname = "kawashima")
+        @name = carname
+    end
+    #インスタンスメソッドの中で initialize と言う名前が付けられたメソッドは特別なメソッドで、インスタンスが生成されるときに自動的に initialize メソッドが呼び出されます。
+
+    def dispName()
+        puts(@name)
+    end
+ end
+
+ car1 = Car.new("lexus")
+ car2 = Car.new()
+
+ car1.dispName()
+ car2.dispName()
+#  -----------------------------------------------
+#attr_readerはインスタンス変数にアクセスするためのゲッター
+# attr_writerはインスタンス変数にアクセスするこめのセッター
+# これらをアクセサメソッドという
+
+class Human
+    attr_reader :name
+    attr_writer :name #追加
+    def initialize(name)
+        @name = name
+    end
+
+end
+human = Human.new("taro")
+puts human.name
+human.name = "siro"# 追加
+puts human.name #　追加
+#  -----------------------------------------
+class Human
+    attr_accessor :name
+    def initialize(name)
+        @name = name
+    end
+
+end
+human = Human.new("taro")
+puts human.name
+human.name = "siro"# 追加
+puts human.name #　追加
+#  -----------------------------------------
+class User
+    attr_accessor :name
+    def initialize(name)
+        @name = name
+    end
+    def sayHi
+        # puts "hi! #{@name}"
+        # puts "hi! #{self.name}"
+        puts "hi! #{name}"
+    end
+end
+tom = User.new("tom")
+# tom.name = "tom Jr"
+p tom.name
+# -----------------------------------
