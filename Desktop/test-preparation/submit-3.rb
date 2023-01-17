@@ -483,3 +483,149 @@ end
 
 puts TestModule.Min(1,5)
 puts TestModule.Max(1,5)
+# ------------------------------------------------
+module Debug
+    def info
+        puts "#{self.class} debug info ..."
+    end
+end
+
+class Player  
+    include Debug
+end
+class Monster 
+    include Debug
+end
+#class クラス名
+# include モジュール名
+# end
+#クラスにinclude モジュール名と記述することで、そのモジュールのインスタンスメソッドをクラスで使用出来るようになります。
+Player.new.info
+Monster.new.info
+# -----------------------------------------------
+module Greet 
+    def say_hello
+       puts  "Hello!"
+    end
+end
+
+class Obj
+    include Greet
+end
+
+Obj.new.say_hello
+#インスタンスを作らないとエラーが発生
+# ----------------------------------------------
+#例外処理
+class MyError < StandardError; end
+
+x = gets.to_i
+
+begin
+  if x == 3
+    raise MyError
+  end
+  p 100 / x
+rescue MyError
+  puts "not 3!"
+rescue => ex
+  p ex.message
+  p ex.class
+  puts "stopped!"
+ensure
+  puts "-- END --"
+end
+# ----------------------------------------------------
+#例外とは「プログラム実行中のエラー」のこと
+begin
+    1/0
+rescue StandardError => e
+    puts e
+    puts "０で割ってはダメです"
+    puts e.class
+    puts e.class.superclass  #StandardError 親クラス
+    puts e.message
+end
+
+#beginブロックで例外が発生すると、beginブロックの処理は中断され、処理のフローはrescueブロックに移ります。
+# そして、ここでは、resucueブロックで、"0で割ってはダメです！"と表示しています。
+# その後、biginブロックへは復帰せず、endまで処理が進んでいます。
+#ZeroDivisionErrorクラスはStandardErrorクラスを継承しているので、この場合は例外を捕捉することができます。
+
+
+#ZeroDivisionErrorが発生したときに行う例外処理, それ以外の例外は捕捉されません。
+begin
+    1/0
+rescue ZeroDivisionError => e
+    puts e.class #ZeroDivisionError
+    puts e.message #divided by 0
+end
+
+
+def fullname(surname, firstname)
+    # "#{sirname}"
+end
+    
+begin
+    1/3
+    puts fullname("長瀬")
+rescue ArgumentError, ZeroDivisionError => e
+    puts e.class
+    puts e.message
+end
+#例外の有無に関わらず実行するensure
+begin
+    1/0
+rescue => e 
+    puts e
+ensure
+    puts "ensure"
+end
+
+#例外が発生しない場合でも、ensure句のブロックは実行されます。
+begin
+    1/1
+rescue => e 
+    puts e 
+ensure
+    puts "ensure"
+end
+#retryメソッドは、beginからの実行を、もう一度やり直す際に使うメソッドです
+count = 0
+begin
+    1/0
+rescue
+    p count += 1
+    retry if count < 5
+    #rescueブロックで、元のエラーの状況が改善し、再びbeginブロックの処理を行うことができるようになった場合、retryメソッドを使って、処理のフローを再びbeginブロックの先頭に移します。
+    puts "これ以上は無理でした"
+end
+# ------------------------------------------------------
+
+# 意図的に例外を発生させるraise
+begin
+    raise
+rescue
+    p "例外です"
+end
+
+begin
+    raise ZeroDivisionError
+rescue => e 
+    p e.class
+end
+#ZeroDivisionErrorの例外を発生させた後に、rescueで捕捉し、どの例外かを出力しています。
+
+#File.openで考慮すべき例外
+begin
+    File.open('sample1.txt') do |file|
+        file.each_line do |line|
+            puts line
+        end
+    end
+rescue SystemCallError => e  
+    puts "class=#{e.class}, message=#{e.message}"
+rescue IOError => e 
+    puts "class= #{e.class}, message= #{e.message}"
+end
+# SystemCallError > IOError
