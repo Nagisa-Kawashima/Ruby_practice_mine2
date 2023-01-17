@@ -264,3 +264,177 @@ tom = User.new("tom")
 # tom.name = "tom Jr"
 p tom.name
 # -----------------------------------
+class User
+    @@count = 0
+    VERSION = 1.1
+    
+    def initialize(name)
+        @@count += 1
+        @name = name
+    end
+    def sayHi
+        puts "hi i am #{@name}"
+    end
+    
+    def self.info
+        puts "#{VERSION}: User Class, #{@@count} instances"
+    end
+end
+
+tom = User.new("tom")
+bob = User.new("bob")
+steve = User.new("steve")
+User.info
+p User::VERSION
+
+class Class_A
+    @@c_name = "未定義"
+    def initialize(arg1)
+      @arg = arg1
+    end
+    def set_c(name)
+      @@c_name = name
+    end
+    def show_i()
+      @arg
+    end
+    def show_c()
+      @@c_name
+    end
+  end
+   
+  obj1 = Class_A.new("No.1")
+  p obj1.show_i() # "No.1"が表示される
+  p obj1.show_c() # "未定義"が表示される
+  obj2 = Class_A.new("No.2")
+  p obj2.show_i() # "No.2"が表示される
+  p obj2.show_c() # "未定義"が表示される
+   
+  obj1.set_c("設定済")
+  p obj1.show_c() # "設定済"が表示される
+  p obj2.show_c() # obj1で設定した"設定済"が表示される
+#   ----------------------------------------------------
+class User
+    def initialize(name)
+        @name = name
+    end
+
+    def sayHi
+        puts "hi i am #{@name}"
+    end
+end
+
+class AdminUser < User
+    def sayHello
+        puts "Hello from #{@name}"
+    end
+    def sayHi
+        super
+        puts "hi from admin!"
+    end
+
+end
+tom = User.new("tom")
+tom.sayHi #呼び出し hi i am tom
+
+tom = AdminUser.new("tom")
+tom.sayHi #呼び出し hi i am tom hi from admin!
+tom = AdminUser.new("kawashi")
+
+tom.sayHello #Hello from kawashi
+# ----------------------------------------------
+# Rubyの場合、C++やPHPと違うのは、インスタンス変数・クラス変数を直接に参照・変更はできず、アクセスメソッドを通して行います。
+# したがって、アクセス制限は、メソッドのみが対象となります。
+# クラス内部でしか利用すべきでないメソッドは、privateやprotectedにしておきます。
+# また、アクセス制限の宣言を何も行わない場合、デフォルトではpublicとなります。
+class AccessTest
+    public
+    def pub
+        puts "public_method"
+    end
+    protected
+    def pro
+        puts "protected_method"
+    end
+    private
+    def priv
+        puts "private_method"
+    end
+end
+
+class SubAccessTest < AccessTest
+    def pub_s
+        pub
+    end
+
+    def pro_s
+        pro
+    end
+    
+    def priv_s
+        priv
+    end
+end
+
+test_super = AccessTest.new
+test_super.pub
+# test_super.pro  #error
+# test_super.priv #error
+
+test_super = SubAccessTest.new
+test_super.pub_s
+test_super.pro_s  
+test_super.priv_s 
+# ---------------------------------------------------
+class TestPro
+    protected
+    def pro
+        puts "protected_method"
+    end
+    
+    public
+    def pro_p
+        TestPro.new.pro
+    end
+end
+ 
+class SubTestPro < TestPro
+    def pro_s
+        TestPro.new.pro
+    end
+end
+ 
+TestPro.new.pro_p
+SubTestPro.new.pro_s
+# ------------------------------------------
+class TestPriv
+    private
+    def priv
+        puts "private_method"
+    end
+    
+    public
+    def priv_p
+        TestPriv.new.priv
+    end
+end
+ 
+class SubTestPriv < TestPriv
+    def priv_s
+        TestPriv.new.priv
+    end
+end
+ 
+TestPriv.new.priv_p        # エラー
+SubTestPriv.new.priv_s    # エラー
+
+#public
+# そのメソッドが定義されたクラス内、サブクラス、クラス外（インスタンス）のどこからでもアクセス可能です。
+
+# private
+# メソッドは、クラスの内部（定義クラスとサブクラス）からのみアクセス可能。
+# レシーバを指定して呼び出すのは不可で、クラス内部からでもインスタンスメソッドとしては使えない。
+
+# protected
+# メソッドは、クラスの内部（定義クラスとサブクラス）からのみアクセス可能。
+# レシーバを指定して呼び出すことができ、クラス内部からであればインスタンスメソッドとして使える。
