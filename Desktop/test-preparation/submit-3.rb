@@ -425,8 +425,8 @@ class SubTestPriv < TestPriv
     end
 end
  
-TestPriv.new.priv_p        # エラー
-SubTestPriv.new.priv_s    # エラー
+# TestPriv.new.priv_p        # エラー
+# SubTestPriv.new.priv_s    # エラー
 
 #public
 # そのメソッドが定義されたクラス内、サブクラス、クラス外（インスタンス）のどこからでもアクセス可能です。
@@ -438,3 +438,48 @@ SubTestPriv.new.priv_s    # エラー
 # protected
 # メソッドは、クラスの内部（定義クラスとサブクラス）からのみアクセス可能。
 # レシーバを指定して呼び出すことができ、クラス内部からであればインスタンスメソッドとして使える。
+# -------------------------------------------------------
+module Movie 
+    VERSION = 1.1
+    def self.encode
+        puts "encoding..."
+    end
+    def self.export  
+        puts "exporting..."
+    end
+end
+
+Movie.encode
+Movie.export
+p Movie::VERSION
+# -------------------------------------------
+module Number
+    def self.plus(num1, num2)
+        num1 + num2
+    end
+end
+puts Number.plus(1, 2)
+# ------------------------------------------
+module TestModule  
+    def Min(x, y)
+        if x < y
+            return x 
+        else
+            return y
+        end
+    end
+
+    def Max(x, y)
+        if x > y
+            return x  
+        else
+            return y
+        end
+    end
+    module_function :Min
+    module_function :Max
+    #module_functionでモジュール名を指定する必要がある
+end
+
+puts TestModule.Min(1,5)
+puts TestModule.Max(1,5)
