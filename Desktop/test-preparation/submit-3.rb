@@ -628,4 +628,103 @@ rescue SystemCallError => e
 rescue IOError => e 
     puts "class= #{e.class}, message= #{e.message}"
 end
-# SystemCallError > IOError
+# SystemCallError > IOError 
+# ------------------------------------------------------------
+# 70. Climbing Stairs
+
+def climb_stairs(n)
+    return 1 if n == 1
+
+    first   = 1
+    second  = 2
+
+    for i in (3..n)
+        third   = first + second
+        first   = second
+        second  = third
+    end
+    
+     return second 
+end
+p climb_stairs(4)
+
+# -----------------------------------------------------------------
+#83. Remove Duplicates from Sorted List
+# def delete_duplicates(head)
+#     curr = head
+
+#     while curr 
+#        while curr.next && curr.next.val == curr.val
+#         curr.next = curr.next.next
+#        end
+#        curr = curr.next
+#     end
+    
+#     return head
+# end
+# hoge = [1,1,2]
+#  delete_duplicates(hoge)
+
+
+def delete_duplicates(head)
+    return if head.nil?
+    curr = head
+    while(curr.next) do
+        if curr.val == curr.next.val
+            curr.next = curr.next.next
+        else
+            curr = curr.next
+        end
+    end
+    return head
+end
+hoge = [1,1,2]
+# p  delete_duplicates(hoge)
+# ---------------------------------------------------------------
+# 88. Merge Sorted Array
+
+def merge(nums1, m, nums2, n)
+    nums1 << nums2
+     nums1.flatten!
+   
+     until nums1.length == m + n 
+       nums1.delete_at(nums1.index(0))
+     end
+     nums1.sort!
+      
+end
+
+p merge([1,2,3,0,0,0], 3, [2,5,6], 3)
+# ---------------------------------------------
+#flattenは多次元の配列やハッシュ（Hash）を平坦化（1次元配列）にするためのメソッドです。
+
+# オブジェクト.flatten
+# オブジェクト.flatten(階層)
+# flattenメソッドは多次元の配列、ハッシュを平坦化して値を返します。
+# 引数を指定しない場合は1次元の配列を返します。
+# 引数を指定した場合は何階層目まで平坦化するかを指定できます。 
+
+array1 = [1,2,[3,4,5,[6,7,[8,9]], 10]]
+p "変更前：#{array1}"
+
+# 多次元配列を1次元配列にする
+array2 = array1.flatten 
+p "変更後：#{array2}"
+
+
+# 配列を定義
+array1 = [1, 2, [3, 4, 5, [6, 7,[8, 9]], 10]]
+ 
+p "変更前：#{array1}"
+
+## 多次元配列を1次元配列にする
+array2 = array1.flatten(2)
+p "変更後：#{array2}"
+
+#ハッシュを1次元配列にする
+hash1 = {apple: 100, orange: 80, melon: 600}
+puts "変更前：#{hash1}"
+
+## ハッシュを1次元配列にする
+hash2 = hash1.flatten
+puts "変更後：#{hash2}"
