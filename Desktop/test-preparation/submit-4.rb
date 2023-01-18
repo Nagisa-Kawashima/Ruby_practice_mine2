@@ -218,3 +218,155 @@ end
 p is_palindrome("A man, a plan, a canal: Panama")
 p is_palindrome("race a car")
 p is_palindrome(" ")
+
+# -----------------------------------------------------------------
+# 136. Single Number
+def single_number(nums)
+    nums.reduce(&:^)
+end
+
+# ------------------------------
+p [2,3,4,5].reduce(2) { |sum, i| sum + i}
+
+
+def map(list, &fn)
+    list.reduce([]) { |a, i| a.push(fn[i])}
+end
+
+p map([2,3,4]) { |i| i *2}
+# ----------------------------------------------
+def sum(ages)
+    ages.reduce(0) do |accumlator, age|
+        accumlator + age
+    end
+end
+
+p sum([1,2,3]) #6
+
+def sum(ages)
+    ages.reduce(0, :+)
+end
+
+p sum([1,2,3]) #6
+
+# permissions.reduce({}) do |hash, permission|
+#     hash.update(permission => true)
+# end
+# ------------------------------------------------------
+# 141. Linked List Cycle
+
+# def hasCycle(head)
+#     seen = {}
+#     current = head
+
+#     return false if head.nil? || head.next.nil?
+    
+#     while !current.nil?
+#         if seen.key?(current)
+#             return true
+#         else
+#             seen[current] = current.val
+#         end
+#         current = current.next
+#     end
+    
+#     return false
+# end
+
+# p hasCycle([3,2,0,-4])
+
+def hasCycle(head)
+    fast = slow = head
+    
+    while fast && fast.next
+        slow = slow.next
+        fast = fast.next.next
+
+        return true if slow == fast
+    end
+
+    return false
+end
+
+
+# Definition for singly-linked list.
+class ListNode
+    attr_accessor :val, :next
+    def initialize(val)
+      @val = val
+      @next = nil
+    end
+  end
+  
+  # @param {ListNode} head
+  # @return {Boolean}
+#   def hasCycle(head)
+#     return false if head.nil? || head.next.nil?
+  
+#     fast = head.next.next
+#     slow = head.next
+  
+#     return true if fast == slow
+  
+#     until fast.nil? || fast.next.nil? do
+#       fast = fast.next.next
+#       slow = slow.next
+  
+#       return true if fast == slow
+#     end
+  
+#     false
+#   end
+
+
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} head
+# @return {Boolean}
+# def hasCycle(head)
+#     return false if head.nil?
+#     h = {}
+#     h[head] = true
+#     while head
+#       head = head.next
+#       return true if head && h[head]
+#       h[head] = true if head
+#     end
+#     return false
+# end
+
+
+# def hasCycle(head)
+#     return false if head.nil?
+#     p1,p2 = head, head
+#     while p1 && p2
+#       10.times do 
+#         break if p1.nil?
+#         p1 = p1.next
+#         return true if p1 && p2 && p1 == p2
+#       end
+#       p2 = p2.next
+#       return true if p1 && p2 && p1 == p2
+#     end
+#     return false
+# end
+
+# def hasCycle(head)
+#     dict = {}
+  
+#     while (head)
+#       return true if dict.key? head
+      
+#       dict[head] = true
+#       head = head.next
+#     end
+    
+#     false
+# end
+
