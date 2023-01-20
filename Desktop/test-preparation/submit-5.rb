@@ -217,9 +217,159 @@ end
 puts some_method
 
 
-name = 'Alice'
-a = <<-TEXT
-ようこそ！#{name}さん
-以下のメッセージをご覧ください
-TEXT 
+# name = 'Alice'
+# a = << TEXT
+# ようこそ！#{name}さん
+# 以下のメッセージをご覧ください
+# TEXT 
+# puts a
+
+# nums = 1*2÷3+4*5÷6+7*8÷9..+19999*20000÷20001
+# 19999.times{|num|
+# puts nums
+# }
+
+
+# for num in 1*2÷3+4*5÷6+7*8÷9..+19999*20000÷20001 do
+#     puts num
+# end
+
+# a = <<TEXT
+# こんにちはこんにちは
+# TEXT
+# puts a
+
+a = <<"TEXT"
+こんにちはこんにちは
+TEXT
 puts a
+
+
+p sprintf('%0.3f', 1.2)
+
+
+# name = 'Alice'
+# a = <<TEXT
+# ようこそ、#{name}さん！
+# 以下のメッセージをご覧ください
+# TEXT 
+# puts a  
+
+
+# a = <<TEXT
+# こんにちは\nさようなら
+# TEXT 
+# puts a
+
+
+p '%0.3f' %1.2
+
+p sprintf('%0.3f + %0.3f', 1.2, 0.48)
+
+p '%0.3f + %0.3f' %[1.2, 0.48]
+
+
+p 123.to_s
+
+p [10, 20, 30].join
+
+p 'Hi' *10
+
+p String.new('hello')
+p 'abc' 'def'
+p 'abc''def'
+
+
+p "\u3042\u3044\u3046"
+
+puts "\u0041"
+p "\u{41}"
+
+p 'a'
+p 'abc'
+p '' 
+p ?a
+
+p 0b11111111
+p 0377
+p 0o377
+p 0xff
+p 0d255
+
+p sprintf '%#b', (0b100 & 0b1100)
+
+p 2e-3
+p 10.class 
+p 1.1.class
+
+
+r = 2 / 3r 
+p r 
+p r.class
+
+
+r = '2/3'.to_r 
+p r 
+r.class 
+
+c = 0.3 - 0.5i 
+p c 
+p c.class
+
+
+status = 'error' 
+unless status == 'ok'
+    p '何か異常があります'
+end
+
+status = 'ok'
+unless status == 'ok'
+else 
+    p '正常です'
+end
+
+status = 'error'
+message = 
+    unless status == 'ok'
+        '何か異常があります'
+    else
+        '正解です'
+    end
+
+p message
+
+
+p '何か異常があります'unless status == 'ok'
+
+status = 'error'
+unless status == 'ok' then 
+   p '何か異常があります'
+end
+
+s = ''
+if s.empty?
+    '空文字列です'
+end
+
+n = 123 
+if !n.zero? 
+    'ゼロではありません'
+end
+
+user = nil 
+if !user 
+   p 'nilです'
+end
+
+if user.nil? 
+    p 'nilです'
+end
+unless user
+    p 'nilです'
+end
+
+
+some_value = true 
+if some_value == true 
+    p'trueそのものです'
+end
