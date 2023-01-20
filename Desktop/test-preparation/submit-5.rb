@@ -373,3 +373,94 @@ some_value = true
 if some_value == true 
     p'trueそのものです'
 end
+
+country = 'us'
+country =
+case country 
+when 'japan'
+    'こんにちは'
+when 'us'
+    'Hello'
+when 'Italy'
+    'Ciao'
+else
+    '???'
+end
+
+p country
+
+country = 'アメリカ'
+case country
+when 'japan', '日本'
+    'こんにちは'
+when 'us', 'アメリカ'
+    'Hello'
+when 'italy', 'イタリア'
+    'ciao'
+else 
+    '???'
+end
+
+
+country = 'italy'
+country =
+case 
+when country == 'japan'
+    'こんにちは'
+when country == 'us'
+    'Hello'
+when country == 'italy'
+    'Ciao'
+else 
+    '???'
+end
+
+p country 
+
+country = 'italy'
+message = 
+case country 
+when 'japan'
+    'こんにちは'
+when 'us'
+    'Hello'
+when 'italy'
+    'Ciao'
+else 
+    '???'
+end
+
+p message
+
+country = '?aaa'
+country = 
+case country 
+when 'japan' then 'こんにちは'
+when 'us' then 'Hello'
+when 'italy' then 'Ciao'
+else '???'
+end
+p country
+
+# case [0, 1, 2]
+# in [n, 1, 2]
+#     "n=#{n}"
+# else
+#     'not matched'
+# end
+
+n = 11
+if n > 10
+    '10より大きい'
+else 
+    '10以下'
+end
+
+n = 11
+p n > 10? '10より大きい' : '10以下' 
+
+n= 11
+message = n > 10 ? '10より大きい' : '10以下'
+p message
+
+
