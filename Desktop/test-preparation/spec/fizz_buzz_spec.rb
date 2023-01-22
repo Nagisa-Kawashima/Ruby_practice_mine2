@@ -13,3 +13,5 @@ class FizzBuzzTest < Test::Unit::TestCase
         assert_equal '1', fizz_buzz(1)
     end 
 end
+
+

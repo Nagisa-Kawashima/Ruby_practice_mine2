@@ -108,4 +108,96 @@ p m!(c)
 p b
 p c 
 # p d 
+p a 
+
+p [].class
+a = [
+    1,
+    2,
+    3
+]
+
+a = [
+    1,
+    2,
+    3,
+]
+
+a = [1, 'apple', 2, 'orange', 3, 'melon'] 
+
+a =[[10, 20, 30],[40, 50, 60],[70, 80, 90]]
+
+a = [1,2,3]
+p a[0]
+p a.size 
+p a.length 
+
+a = [1,2,3]
+a[4] = 50 
 p a
+
+a = []
+a << 1
+a << 2
+a << 3 
+p a 
+
+a = [1,2,3]
+a.delete_at(1)
+p a 
+
+a.delete_at(100)
+p a 
+
+
+a, b = 1, 2
+a, b = [1,2]
+p a 
+p b 
+
+c,d= [10] 
+p c 
+p d 
+e,f = [100, 200, 300]
+p e 
+p f
+
+p 14.divmod(3) 
+
+quo_rem = 14.divmod(3)
+p "商=#{quo_rem[0]}, 余り=#{quo_rem[1]}"
+
+quo_rem = 14.divmod(3) 
+p "商=#{quo_rem[0]}, 余り=#{quo_rem[1]}"
+
+quoient, remainder = 14.divmod(3)
+p "商#{quoient}, 余り#{remainder}" 
+
+a = [1,2,3,1,2,3]
+a.delete(2)
+p a 
+
+a = [1,2,3,1,2,3]
+a.delete_if do |n|
+    p n.odd? 
+end 
+p a 
+
+
+numbers = [1,2,3,4,5]
+sum = 0 
+
+
+numbers.each do |i|
+    sum += i 
+end 
+p sum
+# puts sum
+
+# numbers.each do |number|
+#     sum += number 
+# end 
+
+# numbers.each do |element|
+#     sum += element 
+# end
