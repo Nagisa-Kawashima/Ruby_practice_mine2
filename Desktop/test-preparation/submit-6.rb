@@ -200,4 +200,138 @@ p sum
 
 # numbers.each do |element|
 #     sum += element 
-# end
+# end 
+
+
+numbers = [1,2,3,4]
+sum = 0
+numbers.each do |n| 
+    sum_value = n.even? ? n * 10 : n  
+     sum += sum_value 
+end  
+
+p sum  
+# p sum_value 
+
+numbers = [1,2,3,4]
+sum = 0 
+sum_value = 100 
+
+numbers.each do |sum_value|
+    sum += sum_value 
+end 
+p sum  
+p sum_value
+
+numbers = [1,2,3,4] 
+sum = 0 
+numbers.each do |n| sum += n end 
+ p sum  
+numbers = [1,2,3,4] 
+sum = 0 
+numbers.each { |n|
+ sum += n 
+} 
+p sum
+
+numbers = [1,2,3,4,5]
+new_numbers = [] 
+numbers.each { |n| new_numbers << n * 10 }
+p new_numbers  
+
+numbers = [1,2,3,4,5]
+new_numbers = numbers.map { |n| n * 10 } 
+p new_numbers
+numbers = [1,2,3,4,5]
+new_numbers = numbers.collect { |n| n * 10 } 
+p new_numbers 
+
+numbers = [1,2,3,4,5]
+even_numbers = numbers.select { |n| n.even? } 
+p even_numbers 
+numbers = [1,2,3,4,5]
+even_numbers = numbers.find_all { |n| n.even? } 
+p even_numbers 
+
+
+numbers = [1,2,3,4,5,6] 
+non_multiples_of_three = numbers.reject { |n| n % 3 == 0 }
+p non_multiples_of_three 
+
+numbers = [1,2,3,4,5,6] 
+even_number = numbers.find { |n| n.even? }
+p even_number  
+numbers = [1,2,3,4,5,6] 
+even_number = numbers.detect { |n| n.even? }
+p even_number  
+
+
+numbers = [1,2,3,4]
+p numbers.sum
+
+numbers = [1,2,3,4] #2, 4, 6, 8
+p numbers.sum { |n| n * 2 }  
+
+chars = ['a', 'b', 'c']
+p chars.sum("")
+p chars.sum(' ')
+p chars.sum('..')
+
+chars = ['a', 'b', 'c'] 
+p chars.join 
+
+chars = ['a', 'b', 'c'] 
+p chars.join('-')  
+
+data = ['a', 2, 'b', 4] 
+p data.join 
+
+chars = ['a', 'b', 'c'] 
+p chars.sum('>') { |c| c.upcase }
+p chars.sum('///?') { |c| c.upcase } 
+
+
+array =['ruby', 'java', 'python'].map { |s| s.upcase } 
+
+p array 
+
+arrays =['ruby', 'java', 'python'].map(&:upcase) 
+p arrays 
+
+array1 =[1,2,3,4,5,6].select { |n| n.odd? } 
+p array1
+array2 = [1,2,3,4,5,6].select(&:odd?) 
+p array2 
+
+
+array3 =[1,2,3,4,5,6].select { |n| n % 3 == 0 }
+p array3
+array4 = [9,10,11,12].map { |n| n.to_s(16) }
+p array4
+
+
+
+array5 =[1,2,3,4].map do |n| 
+    m = n * 4 
+    m.to_s 
+end 
+p array5
+
+p (1..5).class
+p (1...5).class
+
+range = 1..5
+p range.include?(0)
+p range.include?(1)
+p range.include?(4.9)
+p range.include?(5)
+p range.include?(6)
+
+range = 1...5
+p range.include?(0)
+p range.include?(1)
+p range.include?(4.9)
+p range.include?(5)
+p range.include?(6)
+
+p (1..5).include?(1)
