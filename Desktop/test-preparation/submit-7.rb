@@ -176,5 +176,59 @@ p "ruby, java, python".split(',')
 a = Array.new(6, 3) 
 p a 
 
-a = Array.new(10) { |n| n % 3 + 1} 
+a = Array.new(10) { |n| n % 4 + 1} 
+p a 
+
+
+a = Array.new(5) { 'default' } 
+p a 
+str = a[0]
+p str 
+p str.upcase! 
+p str 
 p a
+
+a = Array.new(5, 'default')
+p a 
+p str = a[0] 
+str.upcase!
+p str 
+p a 
+
+p a = Array.new(5, 0)
+p a 
+
+n = a[0]
+p n  
+
+a = 'abcde' 
+p a[2] 
+p a[1, 3] 
+p a[-1] 
+
+p a[0] = "XX" 
+p a 
+p a[1, 3] = "Y" 
+p a 
+p a << "PQRS" 
+
+fruits = ['apple', 'orange', 'melon'] 
+fruits.each_with_index { |fruit, i| puts "#{fruit}: #{i}"}
+# p fruits  
+
+fruits = ['apple', 'orange', 'melon']
+p fruits.map.with_index { |fruit, i|  "#{fruit}: #{i}"} 
+# p fruits 
+
+fruits = ['apple', 'orange', 'mikan'] 
+p fruits.delete_if.with_index { |hoge, i| hoge.include?('a') && i.odd? } 
+
+fruits = ['apple', 'orange', 'mikan'] 
+p fruits.each
+p fruits.map 
+p fruits.delete_if
+# p fruits.delete 
+
+fruits = ['apple', 'orange', 'mikan'] 
+fruits.each.with_index(2) { |fruit, i| puts "#{i}:#{fruit}" }
+fruits.map.with_index(10) { |fruit, i| puts "#{i}: #{fruit}" }
