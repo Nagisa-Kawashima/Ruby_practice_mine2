@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="classMethod.human.ClassMethod02"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="capsule.human.HumanCapsule"/>
+    <fullyQualifiedTypeName name="capsule.human.HumanNoCapsule"/>
+</qualifiedTypeNameHistroy>
