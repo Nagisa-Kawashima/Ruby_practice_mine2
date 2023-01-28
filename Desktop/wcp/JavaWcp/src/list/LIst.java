@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LIst {
 	public static void main(String[] args) {
-		List<String> list1 = new ArrayList<String>();
+		List<String> list1 = new ArrayList<>();
 		list1.add("りんご");
 		list1.add("みかん");
 		// 位置を指定して要素を追加する
