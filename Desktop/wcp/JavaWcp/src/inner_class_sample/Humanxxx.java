@@ -7,6 +7,7 @@ public class Humanxxx {
 		Human human = new Human();
 		Human.HumanLeg leg = new HumanLeg();
 		leg.kick();
+		
 	}
 
 }
