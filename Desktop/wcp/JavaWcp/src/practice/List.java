@@ -41,5 +41,32 @@ public LocalDate getDate() {
   public String toString() {
     return date + ":" + list + ":" + done + "]";
   }
+
+
+
+
+
+public void add(List list2) {
+	// TODO 自動生成されたメソッド・スタブ
+	
+}
+
+
+
+
+
+public Object stream() {
+	// TODO 自動生成されたメソッド・スタブ
+	return null;
+}
+
+
+
+
+
+public void forEach(Object object) {
+	// TODO 自動生成されたメソッド・スタブ
+	
+}
   
 }

@@ -11,8 +11,7 @@ public interface Comparator {
 		List<Integer> numbers = Arrays.asList(1, -8, 4, 2);
 		Collections.sort(
 			    numbers,
-			    new Comparator<Integer>() {
-			      @Override
+			    new Comparator() {
 			      public int compare(Integer x, Integer y) {
 			        // 数値が小さい順に並べる
 			        return Integer.compare(x, y);
