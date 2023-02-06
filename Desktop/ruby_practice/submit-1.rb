@@ -129,3 +129,30 @@ end.join('と')
 # add_names.join('と') 
 # p add_names
 # puts add_names
+
+numbers = [10, 20, 30, 40, 50]
+p numbers[2..]
+p numbers[..1] 
+
+sum = 0
+5.times { |n| sum += n}
+p sum 
+
+sum = 0
+5.times { sum += 1}
+p sum
+
+a = []
+10.upto(14){ |n| a << n}
+p a 
+
+a = []
+14.downto(9) { |n| a << n}
+p a 
+
+a = []
+1.step(10, 2){ |n| a << n}
+p a 
+a = []
+10.step(1, -2) {|n| a << n}
+p a
