@@ -66,3 +66,61 @@ def buy_burger(menu, options = {})
 end 
 
 buy_burger 'fish', 'drink' => true, 'potato' => false
+
+
+puts ({ foo: 1, bar: 2}) 
+
+currencies = { japan: 'yen', us: 'dollar', india: 'rupee'}
+p currencies.to_a 
+
+array = [[:japan, 'yen'], [:us, 'dollar'], [:india, 'rupee']]
+p array.to_h
+array = [[:japan, 'yen'], [:us, 'dollar'], [:india, 'rupee']]
+p Hash[array]
+# p Hash[*array] 
+
+h = Hash.new('hello')
+p h[:foo] 
+
+h = Hash.new('hello')
+a = h[:foo]
+b = h[:bar] 
+
+p a.equal?(b) 
+
+a.upcase!
+p b 
+p h 
+
+h = Hash.new{'hello'} 
+a = h[:foo]
+b = h[:bar] 
+
+p a.equal?(b)
+a.upcase!
+p a
+p b 
+p h 
+
+
+h = Hash.new { |hash,key| hash[key] = 'hello'}
+h[:foo] 
+h[:bar] 
+p h 
+
+
+def foo(*args)
+    p args 
+end 
+
+foo(x:1) 
+
+def bar(*args, **nil)
+    p args 
+end 
+bar({x:1})
+
+# def foo(...)
+#     bar(...)
+# end 
+# foo(10, 20, c:30)
