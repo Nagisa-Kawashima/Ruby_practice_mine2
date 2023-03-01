@@ -257,3 +257,79 @@ rescue => ex
 ensure #例外が発生しようがしまいが、最後に絶対実行したい処理は ensure
   puts "-- END --"
 end
+
+
+number = rand(1..3)
+puts "あなたの順位は#{number}位です"
+if number == 1
+  puts "おめでとう！！"
+end
+
+
+number = rand(1..10)
+puts number
+if number <= 5 && number >= 2
+    puts "あなたの順位は(2..5)位です"
+    puts "あと少し！"
+elsif number == 1 
+    puts "あなたの順位は(#{number})位です"
+else 
+    puts "あなたの順位は(6..10)位です"
+
+end 
+
+number = "0.08"
+puts number.to_i
+
+
+i = 0
+while i <=4   
+  puts "ハロー、paizaラーニング" 
+  i += 1
+end
+
+# i = 0
+# while i <= 4
+# 	puts "ハロー、paizaラーニング"
+# 	i = ++
+# end 
+
+
+print "名前を入力してください: "
+name = gets.chomp
+puts "Hello, #{name}!"
+
+input_line = gets.to_i
+
+for i in 1..input_line
+    line = gets
+    puts line
+end
+
+input_line = gets.to_i
+# puts "XXXXXX"
+
+for i in 1..input_line do
+    answer = "paiza"+ " "
+    printf answer
+end
+
+def introduce(name)
+  puts "私は#{name}です。"
+end
+
+introduce("勇者")
+
+
+def say_hello(mad)
+  puts ("hello#{mad}")
+end 
+
+say_hello "paiza"
+
+number = "123"
+p number
+p number.to_i
+
+
+say_hello(number)
