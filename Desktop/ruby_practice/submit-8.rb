@@ -74,3 +74,19 @@ end
 # rescueブロックはサブクラスから記述する
 # NoMethodError< NameError
 #Exceptionはすべてのエラーのスーパークラス
+
+
+begin
+    enemies = ["スライム","ドラゴン","魔王"]
+    number1 = 0
+
+    puts "勇者は敵に遭遇した"
+    puts "勇者は#{enemies[number2]}と戦った"
+rescue Exception => e
+    STDERR.puts "未定義の変数を呼び出しています"
+rescue ZeroDivisionError => e
+    STDERR.puts "その敵は表示できません"
+ensure
+    puts "勇者は勝利した"
+end
+
