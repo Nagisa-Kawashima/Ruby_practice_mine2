@@ -121,3 +121,14 @@ a.each { |row| puts row.join(' ') }
 a = 3.times.map { gets.split.map(&:to_i) }
 
 a.each { |row| puts row.join(' ') }
+# ---------------------------------------------
+
+input_line = gets.to_i
+# puts "XXXXXX"
+
+num = gets
+array = num.split
+array.each do |line|   
+    puts line
+end
+# p array
