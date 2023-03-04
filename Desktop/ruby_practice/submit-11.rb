@@ -54,3 +54,29 @@ n.times do
   m = a.shift #先頭の配列を取り除く 
   puts a.join(' ') #join 配列の要素を連結した文字列にして返すもの
 end
+
+(1...1000).each do |i|
+    p i
+  end
+
+  1000.times do |i|
+    p i + 1
+end
+# ------------------------------------------------
+for i in (1..10)
+    # print(i + 1 + " ")
+    number = i 
+    print number.to_s  + " "
+end
+# ------------------------------------------
+for i in (1..1000)
+    # print(i + 1 + " ")
+    number = i 
+    # a =number.to_s  + " "
+    # print a.chomp
+    if i <= 999
+        print number.to_s  + " "
+    else    
+        print number
+    end
+end
