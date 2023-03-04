@@ -171,3 +171,27 @@ puts array.join("|")
 input_line = gets
 array = input_line.split.join(",")
 puts array + ","
+# ----------------------------------------
+input_line = gets
+array = input_line.split.join(",")
+puts array 
+
+# -------------------------------
+
+n, m = gets.split.map(&:to_i)
+array = []
+(n-1).times do   
+    number = gets.to_i
+    array.push(number)
+   
+end
+size =array.length
+p size
+for i in 1..size do    
+    
+end
+a =array[size] - array[size - 1]
+a =array[size - 1] - array[size - 2]
+a =array[size - 2] - array[size - 3]
+
+#  p array
