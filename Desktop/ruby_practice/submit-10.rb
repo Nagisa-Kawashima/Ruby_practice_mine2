@@ -116,3 +116,8 @@ a = 3.times.map { gets.split.map(&:to_i) }
 
 a.each { |row| puts row.join(' ') }
 3.times で生成される Enumerator オブジェクトに map メソッドを使って、各要素に入力を半角スペースで区切って整数に変換した配列を代入しています。
+
+# ----------------------------------------------------------
+a = 3.times.map { gets.split.map(&:to_i) }
+
+a.each { |row| puts row.join(' ') }
