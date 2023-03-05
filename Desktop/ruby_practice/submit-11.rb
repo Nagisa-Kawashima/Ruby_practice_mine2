@@ -195,3 +195,61 @@ a =array[size - 1] - array[size - 2]
 a =array[size - 2] - array[size - 3]
 
 #  p array
+# ----------------------------------------
+array = []
+10.times do 
+  
+    input_line = gets.chomp
+    array.push(input_line)
+end
+
+
+puts array.join(" | ")
+#半角区切りにしたいなら結合にスペースあけるだけ
+
+
+# split([sep[, limit]])
+# "文字列".split(区切り文字, 分割数)
+# -------------------------------------------
+input_line = gets.to_i
+
+puts input_line.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+
+# -----------------------------------------------------
+input_line = gets.to_i
+
+puts input_line.to_s.reverse.scan(/.{1,3}/).join(",").reverse
+# scan メソッドで、正規表現にマッチした部分を繰り返して配列を取得。ここでの正規表現は「なんでもいいから少なくとも1文字、多くて3文字」にマッチする
+# --------------------------------------
+print("0 8\n1 3")
+
+# -------------------------------------
+
+input = gets.split("")
+# p input
+array = input.map(&:to_i)
+# 数字の配列に変換
+# p array
+
+# 
+array.each do   |i|
+    if i == 2 || i ==5 || i == 8
+        puts i
+    else     
+        print i.to_s + " "
+    end
+end
+# ---------------------------------------------
+input = gets.chomp.split(" ")
+# p input
+array = input.map(&:to_i)
+# p array
+# 
+# array.each do   |i|  
+for i in array do   
+    if i % 3 == 2
+        puts i
+    else     
+        print i.to_s + " "
+    end
+end
