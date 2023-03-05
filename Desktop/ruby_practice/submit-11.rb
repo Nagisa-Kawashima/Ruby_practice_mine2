@@ -253,3 +253,28 @@ for i in array do
         print i.to_s + " "
     end
 end
+# -------------------------------------------
+
+# Let's チャレンジ！！
+a = gets.to_f
+# puts "XXXXXX"
+# puts input_line.round(3)
+
+
+# a = 10.2
+printf("%0.3f", a)
+
+input_line = gets.chomp.split
+array = input_line.map(&:to_f)
+# p array
+# puts "XXXXXX"
+
+b =array[1]
+num = b * 0.1
+# p num
+
+a = array[0]
+printf("%#{num}f", a)
+
+
+
