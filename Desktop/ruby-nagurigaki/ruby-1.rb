@@ -81,3 +81,10 @@ puts text.gsub(/^[ \t]+$/, '')
 # hello('Bob')
 # 
 # hello('Carol')
+
+
+{
+  japan:	'yen',
+  america:'dollar',
+  italy:     'euro'
+}
